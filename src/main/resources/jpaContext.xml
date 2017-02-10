@@ -22,8 +22,11 @@
         </property>
         <property name="jpaPropertyMap">
             <map>
+                <!-- What vendor of DB we are going against, allows Hibernate to generate the right sql for the DB -->
                 <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+                <!-- Option that specifies DB creation / validation / etc based on a schema, on app start up -->
                 <entry key="hibernate.hbm2ddl.auto" value="none" />
+                <!-- Pretty SQL formatting -->
                 <entry key="hibernate.format_sql" value="true" />
             </map>
         </property>
