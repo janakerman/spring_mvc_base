@@ -14,7 +14,7 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="punit" />
         <property name="dataSource" ref="dataSource" />
-        <property name="jpaVendorAdaptor">
+        <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <!-- Show sql behind the scenes when running - good for debugging -->
                 <property name="showSql" value="true" />
@@ -25,7 +25,7 @@
                 <!-- What vendor of DB we are going against, allows Hibernate to generate the right sql for the DB -->
                 <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
                 <!-- Option that specifies DB creation / validation / etc based on a schema, on app start up -->
-                <entry key="hibernate.hbm2ddl.auto" value="none" />
+                <entry key="hibernate.hbm2ddl.auto" value="create" />
                 <!-- Pretty SQL formatting -->
                 <entry key="hibernate.format_sql" value="true" />
             </map>
