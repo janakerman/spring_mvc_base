@@ -20,11 +20,15 @@ public class GoalRespositoryImpl implements GoalRepository {
     private EntityManager entityManager;
 
     public Goal save(Goal goal) {
-        entityManager.persist(goal);
+        if(goal.getId() == null) {
+            entityManager.persist(goal);
 
-        // You have to flush before changes are actually written to database
-        // Otherwise it won't save until you do a READ
-        entityManager.flush();
+            // You have to flush before changes are actually written to database
+            // Otherwise it won't save until you do a READ
+            entityManager.flush();
+        } else {
+            goal = entityManager.merge(goal);
+        }
 
         return goal;
     }

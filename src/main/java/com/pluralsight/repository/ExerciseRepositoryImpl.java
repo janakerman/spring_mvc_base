@@ -17,9 +17,13 @@ public class ExerciseRepositoryImpl implements ExerciseRepository {
 
 
     public Exercise save(Exercise exercise) {
-        entityManager.persist(exercise);
+        if(exercise.getId() == null) {
+            entityManager.persist(exercise);
 
-        entityManager.flush();
+            entityManager.flush();
+        } else {
+            exercise = entityManager.merge(exercise);
+        }
 
         return exercise;
     }
