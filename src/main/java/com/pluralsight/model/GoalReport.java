@@ -3,6 +3,7 @@ package com.pluralsight.model;
 /**
  * Created by jakerman on 13/02/2017.
  */
+// View object - not an entity - has nothing to do with our persistence tier - just display logic.
 public class GoalReport {
 
     private int goalMinutes;
