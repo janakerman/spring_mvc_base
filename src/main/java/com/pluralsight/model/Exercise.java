@@ -13,7 +13,7 @@ public class Exercise {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Range(min = 1, max = 120)
     private int minutes;
@@ -32,11 +32,11 @@ public class Exercise {
         this.goal = goal;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

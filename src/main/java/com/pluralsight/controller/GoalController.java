@@ -1,5 +1,6 @@
 package com.pluralsight.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.pluralsight.model.GoalReport;
@@ -25,9 +26,14 @@ public class GoalController {
 	private GoalService goalService;
 
 	@RequestMapping(value = "addGoal", method = RequestMethod.GET)
-	public String addGoal(Model model) {
-		Goal goal = new Goal();
-		goal.setMinutes(10);
+	public String addGoal(Model model, HttpSession session /* Automatically injected if included in params */) {
+		Goal goal = (Goal)session.getAttribute("goal");
+
+		if (goal == null) {
+			goal = new Goal();
+			goal.setMinutes(10);
+		}
+
 		model.addAttribute("goal", goal);
 		
 		return "addGoal";
