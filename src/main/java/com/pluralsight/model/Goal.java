@@ -20,13 +20,13 @@ public class Goal {
     @Column(name = "MINUTES") // Same as above RE specifying name - just an exercise for demonstration.
     private int minutes;
 
+    @OneToMany(mappedBy = "goal", cascade = CascadeType.ALL)
     private List<Exercise> exercises = new ArrayList<Exercise>();
 
     public List<Exercise> getExercises() {
         return exercises;
     }
 
-    @OneToMany(mappedBy = "goal", cascade = CascadeType.ALL)
     public void setExercises(List<Exercise> exercises) {
         this.exercises = exercises;
     }
