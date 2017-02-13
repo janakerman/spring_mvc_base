@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Created by jakerman on 13/02/2017.
@@ -23,5 +25,13 @@ public class GoalRespositoryImpl implements GoalRepository {
         entityManager.flush();
 
         return goal;
+    }
+
+    public List<Goal> findAllGoals() {
+        Query query = entityManager.createQuery("Select g from Goal g");
+
+        List goals = query.getResultList();
+
+        return goals;
     }
 }
