@@ -9,7 +9,17 @@ import java.util.List;
 
 @Entity
 @Table(name = "goals")
+// Instead of having JPQL in our repositories, we can tie these queries to the domain object like so, and access them
+// Not sure if I like this, as it's tying JPA specific logic to our model object - have a think?
+@NamedQueries({
+        @NamedQuery(name=Goal.FIND_GOAL_REPORTS, query="Select new com.pluralsight.model.GoalReport(g.minutes, e.minutes, e.activity) " +
+                "from Goal g, Exercise e where g.id = e.goal.id"),
+        @NamedQuery(name=Goal.FIND_ALL_GOALS, query="Select g from Goal g")
+})
 public class Goal {
+
+    public static final String FIND_GOAL_REPORTS = "findGoalReports";
+    public static final String FIND_ALL_GOALS = "findAllGoals";
 
     @Id
     @GeneratedValue // We are using the column type of the database - in MySQL we'll use an auto-incrementing field.
